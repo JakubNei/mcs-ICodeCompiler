@@ -173,7 +173,7 @@ namespace CSharpCompiler
             return CompileFromCompilerSettings(settings, options.GenerateInMemory);
         }
 
-  
+
 
         // Summary:
         //     Compiles an assembly from the specified string containing source code, using
@@ -238,7 +238,7 @@ namespace CSharpCompiler
             {
                 driver.Compile(out outAssembly, AppDomain.CurrentDomain, generateInMemory);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 compilerResults.Errors.Add(new CompilerError()
                 {
@@ -250,7 +250,7 @@ namespace CSharpCompiler
 
             return compilerResults;
         }
-        
+
 
         CompilerSettings ParamsToSettings(CompilerParameters parameters)
         {
@@ -313,7 +313,7 @@ namespace CSharpCompiler
                 parameters.OutputAssembly = settings.OutputFile = "DynamicAssembly_" + assemblyCounter + settings.TargetExt;
                 assemblyCounter++;
             }
-            settings.OutputFile = parameters.OutputAssembly; // it is not being outputted, we use this to set name of the dynamic assembly
+            settings.OutputFile = parameters.OutputAssembly; // if it is not being outputted, we use this to set name of the dynamic assembly
 
             /*
             settings.Timestamps;

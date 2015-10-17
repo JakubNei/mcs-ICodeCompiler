@@ -1,0 +1,12 @@
+y.output
+cs-parser.cs
+?mcs.user
+?mcs.csproj.user
+mcs.csproj.user
+?mcs.pdb
+mcs.pdb
+?mcs.suo
+mcs.suo
+?mcs.vshost*
+obj
+mcs.dll*

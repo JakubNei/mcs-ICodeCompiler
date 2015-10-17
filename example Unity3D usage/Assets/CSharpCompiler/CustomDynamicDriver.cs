@@ -161,7 +161,7 @@ namespace CSharpCompiler
         //
         // Main compilation method
         //
-        public bool Compile(out AssemblyBuilder outAssembly, AppDomain domain, bool saveTheAssembly = false)
+        public bool Compile(out AssemblyBuilder outAssembly, AppDomain domain, bool generateInMemory)
         {
             var settings = ctx.Settings;
 
@@ -304,7 +304,7 @@ namespace CSharpCompiler
                 return false;
 
 
-            if(saveTheAssembly) assembly.Save();
+            if(!generateInMemory) assembly.Save();
             outAssembly = assembly.Builder;
 
 

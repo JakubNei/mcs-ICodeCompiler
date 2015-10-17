@@ -10,7 +10,7 @@ namespace RuntimeCSharpCompiler
 
         void Start()
         {
-            Debug.Log("I live, iam script loaded and parsed by mcs");
+            Debug.Log("I live, Iam script loaded and parsed by mcs during Unity runtime. Yay this is too epic.");
         }
 
 
