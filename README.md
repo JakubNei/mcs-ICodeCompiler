@@ -1,8 +1,10 @@
 # mcs-ICodeCompiler
 
-Most useful for Unity3D or any other application that needs a proper implementation of ICodeCompiler. Main reason is that the official mono implementation depends heavily on paths and more often than not does not work at all, see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs
+Most useful for Unity3D or any other application that needs a proper mono implementation of ICodeCompiler. Main reason is that the official mono implementation depends heavily on paths and more often than not does not work at all, see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs
 
 Thankfully for us mcs was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows use in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
+
+Part of ongoing effort to perfect the question for: http://answers.unity3d.com/questions/364580/scripting-works-in-editor-try-it-but-not-build.html
 
 ## Steps I took to make this work
 
