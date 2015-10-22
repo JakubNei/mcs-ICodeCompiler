@@ -1,10 +1,11 @@
 # mcs-ICodeCompiler
 
-Most useful for Unity3D or any other application that needs a proper mono implementation of ICodeCompiler. Main reason is that the official mono implementation depends heavily on paths and more often than not does not work at all, see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs
+Unity's mono ICodeCompiler iplementation depends heavily on paths and likely will not work (see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs), thus if you build a game it will most likely not work (it does seem to work in editor). That is why i have implemented my own ICodeCompiler that uses compiled modified mcs (mono c# compiler).
 
 Thankfully for us mcs was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows use in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
 
 Part of ongoing effort to perfect the question for: http://answers.unity3d.com/questions/364580/scripting-works-in-editor-try-it-but-not-build.html
+
 
 ## Steps I took to make this work
 
@@ -31,3 +32,13 @@ Note that this way mcs.dll is compiled for dynamic compilation thus it uses Syst
 * I see others doing ugly workarounds. 
 (Cities: Skylines had a complete 300mb mono in their release just so they can compile C# code during runtime ?)
 * I never properly tested it.
+
+
+## Default behavior
+Tries to be as close as possible to the official .NET ICodeCompiler implementation.
+ 
+## Performance considerations
+All of the classes needed are instantiated and used once per each compilation. Each compilation results in one more loaded assembly that you can not unload (you can only unload AppDomain, but not Assembly).
+
+## License
+MIT X11 https://github.com/mono/mono/blob/master/mcs/MIT.X11
