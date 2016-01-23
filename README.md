@@ -1,16 +1,19 @@
 # mcs-ICodeCompiler
 
-Unity's mono ICodeCompiler iplementation depends heavily on paths and likely will not work (see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs), thus if you build a game it will most likely not work (it does seem to work in editor). That is why i have implemented my own ICodeCompiler that uses compiled modified mcs (mono c# compiler).
+An ICodeCompiler interface implementation that uses only mannaged C# code.
+Uses modified MCS (Mono C# compiler).
+
+Mono version that Unity uses has an ICodeCompiler iplementation that depends heavily on paths and likely will work only on Linux systems with Mono installed. (see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs). Thus if your game uses ICodeCompiler provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, whereas Unity editor uses full ~100MB Mono install)
 
 Thankfully for us mcs was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows use in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
 
-Part of ongoing effort to perfect the question for: http://answers.unity3d.com/questions/364580/scripting-works-in-editor-try-it-but-not-build.html
+Part of ongoing effort to perfect the answer for: http://answers.unity3d.com/questions/364580/scripting-works-in-editor-try-it-but-not-build.html
 
 
 ## Steps I took to make this work
 
-0. Download official mono release.
-0. Delete everything that is not needed for mcs, download externals that are needed by mcs.
+0. Download official Mono release.
+0. Delete everything that is not needed for MCS, download externals that are needed by MCS.
 0. Find a way to run jay (the parser generator), mostly from looking at the code of it and or the Makefiles
 0. Jay parser generator was compiled and then ran using the mcs/jay/#_GENERATE_PARSER_FROM_cs-parser.jay.bat
 0. Once jay is used, the cs-parser.jay is transformed into parser file called cs-parser.cs
@@ -23,14 +26,16 @@ Part of ongoing effort to perfect the question for: http://answers.unity3d.com/q
 0. Compile mcs.dll with .NET subset for Unity provided by Microsoft Visual Tools for Unity. 
 0. The modified driver is then used to implement ICodeCompiler interface.
 
+Note that this way mcs.dll is compiled for dynamic compilation thus it uses System.Reflection.Emit as it parses the code. That means it is only compatible with platforms where emiting is available on.
 
-Note that this way mcs.dll is compiled for dynamic compilation thus it uses System.Reflection.Emit as it parses the code. That means it is only compatible with platfroms where emiting is available on.
+Dynamic compilation means your code is compiled into System.Reflection.Emit.AssemblyBuilder.
+
 
 ## Why am I releasing this here
 
 * I had this laying around for about 3 months.
 * I see others doing ugly workarounds. 
-(Cities: Skylines had a complete 300mb mono in their release just so they can compile C# code during runtime ?)
+(Cities: Skylines had a complete ~300mb mono in their release just so they can compile C# code during runtime ?)
 * I never properly tested it.
 
 
