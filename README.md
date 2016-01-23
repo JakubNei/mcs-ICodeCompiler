@@ -5,7 +5,7 @@ Uses modified MCS (Mono C# compiler).
 
 Mono version that Unity uses has an ICodeCompiler iplementation that depends heavily on paths and likely will work only on Linux systems with Mono installed. (see for your self: https://github.com/mosa/Mono-Class-Libraries/blob/master/mcs/class/System/Microsoft.CSharp/CSharpCodeCompiler.cs). Thus if your game uses ICodeCompiler provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, whereas Unity editor uses full ~100MB Mono install)
 
-Thankfully for us mcs was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows use in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
+MCS was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows everyone to use it in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
 
 Part of ongoing effort to perfect the answer for: http://answers.unity3d.com/questions/364580/scripting-works-in-editor-try-it-but-not-build.html
 
@@ -26,7 +26,7 @@ Part of ongoing effort to perfect the answer for: http://answers.unity3d.com/que
 0. Compile mcs.dll with .NET subset for Unity provided by Microsoft Visual Tools for Unity. 
 0. The modified driver is then used to implement ICodeCompiler interface.
 
-Note that this way mcs.dll is compiled for dynamic compilation thus it uses System.Reflection.Emit as it parses the code. That means it is only compatible with platforms where emiting is available on.
+This way mcs.dll is compiled for dynamic compilation thus it uses System.Reflection.Emit as it parses the code. That means it is only compatible with platforms where emiting is available on.
 
 Dynamic compilation means your code is compiled into System.Reflection.Emit.AssemblyBuilder.
 
@@ -46,4 +46,4 @@ Tries to be as close as possible to the official .NET ICodeCompiler implementati
 All of the classes needed are instantiated and used once per each compilation. Each compilation results in one more loaded assembly that you can not unload (you can only unload AppDomain, but not Assembly).
 
 ## License
-MIT X11 https://github.com/mono/mono/blob/master/mcs/MIT.X11
+Same as MCS: MIT X11 https://github.com/mono/mono/blob/master/mcs/MIT.X11
