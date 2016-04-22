@@ -89,6 +89,8 @@ namespace CSharpCompiler
         //     compilation.
         private CompilerResults CompileFromDomBatch(CompilerParameters options, CodeCompileUnit[] ea)
         {
+            throw new NotImplementedException("sorry ICodeGenerator is not implemented, feel free to fix it and request merge");
+
             if (options == null)
             {
                 throw new ArgumentNullException("options");
