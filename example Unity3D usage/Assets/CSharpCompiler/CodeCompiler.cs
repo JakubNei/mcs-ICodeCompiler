@@ -217,8 +217,9 @@ namespace CSharpCompiler
             var settings = ParamsToSettings(options);
 
             int i = 0;
-            foreach (var source in sources)
+            foreach (var _source in sources)
             {
+                var source = _source;
                 Func<Stream> getStream = () => { return new MemoryStream(Encoding.UTF8.GetBytes(source ?? "")); };
                 var fileName = i.ToString();
                 var unit = new SourceFile(fileName, fileName, settings.SourceFiles.Count + 1, getStream);
