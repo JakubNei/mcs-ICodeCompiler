@@ -22,7 +22,7 @@ More humanly explained: [Compile C# at runtime in Unity3D](http://www.arcturusco
 	0. Remove STATIC
 	0. Add BOOTSTRAP_BASIC
 	0. Change NET_X_X to NET_2_1 (we need older NET because we want to use this mcs inside Unity3D)
-0. Change all internal classes to public, so they can be used in modified driver (the main class of mcs).
+0. Change all internal classes to public, so they can be used in modified driver (driver = main class of mcs).
 0. Compile mcs.dll with .NET subset for Unity provided by Microsoft Visual Tools for Unity. 
 0. The modified driver is then used to implement ICodeCompiler interface.
 
