@@ -30,6 +30,7 @@ This way mcs.dll is compiled for dynamic compilation thus it uses System.Reflect
 
 Dynamic compilation means your code is compiled into System.Reflection.Emit.AssemblyBuilder.
 
+If compilation takes long time everytime you start your game, you could technically save compiled dynamic assembly into dll file with [System.Reflection.Emit.AssemblyBuilder.Save(string filePath)](https://msdn.microsoft.com/en-us/library/8zwdfdeh(v=vs.110).aspx) and on the next run load it with [System.Reflection.Assembly.Load(string filePath)](System.Reflection.Assembly.Load(string filePath)).
 
 ## Why am I releasing this here
 
