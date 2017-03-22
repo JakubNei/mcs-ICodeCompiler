@@ -12,6 +12,8 @@ Part of ongoing effort to perfect the answer for: http://answers.unity3d.com/que
 
 More humanly explained: [Compile C# at runtime in Unity3D](http://www.arcturuscollective.com/archives/22) (thank you [exodrifter](https://github.com/exodrifter))
 
+http://gamedev.stackexchange.com/a/130584/41980 (useful warning here)
+
 [CS-Script for Unity](https://www.assetstore.unity3d.com/en/#!/content/23510)
 
 ## Steps I took to make this work
@@ -37,12 +39,13 @@ Dynamic compilation means your code is compiled into System.Reflection.Emit.Asse
 If compilation takes long time everytime you start your game, you could technically save compiled dynamic assembly into dll file with [System.Reflection.Emit.AssemblyBuilder.Save(string filePath)](https://msdn.microsoft.com/en-us/library/8zwdfdeh(v=vs.110).aspx) and on the next run load it with [System.Reflection.Assembly.LoadFrom(string assemblyFile)](https://msdn.microsoft.com/en-us/library/1009fa28(v=vs.110).aspx).
 
 ## Why am I releasing this here
-
 * I had this laying around for about 3 months.
 * I see others doing ugly workarounds. 
 (I think Cities: Skylines had a complete ~300mb Mono in their release just so they can compile C# code during runtime ?)
 * I never properly tested it.
 
+## Future work
+You can limit the permissions of assemblies by loading them into your own sandboxed AppDomain. This is what [Space Engineers](https://github.com/KeenSoftwareHouse/SpaceEngineers/) and other games do. It would be nice if this project contained an easy to use classes to do this.
 
 ## Default behavior
 Tries to be as close as possible to the official .NET ICodeCompiler implementation.
