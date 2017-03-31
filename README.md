@@ -1,8 +1,9 @@
 # mcs-ICodeCompiler
 
-Fully C# mannaged ICodeCompiler implementation that uses modified MCS (Mono C# compiler).
+[Mono MCS](http://www.mono-project.com/docs/about-mono/languages/csharp/) is a C# console application used to compile C#, I took it's source and used it to implement [ICodeCompiler](https://msdn.microsoft.com/en-us/library/system.codedom.compiler.icodecompiler(v=vs.110).aspx) interface.
 
-Mono version that Unity uses has an ICodeCompiler iplementation that depends heavily on paths and likely will work only on Linux systems with Mono installed. (see for your self: https://www.google.cz/search?q=mono+CSharpCodeCompiler.cs). Thus if your game uses ICodeCompiler provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, whereas Unity editor uses the full ~300MB Mono install)
+### Why
+Mono version that Unity uses has an ICodeCompiler iplementation that depends heavily on paths and likely will work only on Linux systems with Mono installed. (see for your self: https://www.google.cz/search?q=mono+CSharpCodeCompiler.cs). Thus if your game uses ICodeCompiler implementation provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, whereas Unity editor uses the full ~300MB Mono install)
 
 MCS was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows everyone to use it in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
 
