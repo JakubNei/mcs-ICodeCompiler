@@ -42,7 +42,6 @@ If compilation takes long time everytime you start your game, you could technica
 ## Why am I releasing this here
 * I had this laying around for about 3 months.
 * I see others doing ugly workarounds. 
-(I think Cities: Skylines had a complete ~300mb Mono in their release just so they can compile C# code during runtime ?)
 * I never properly tested it.
 
 ## Future work
