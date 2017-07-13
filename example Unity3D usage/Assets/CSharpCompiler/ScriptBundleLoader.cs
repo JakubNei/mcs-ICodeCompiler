@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using System.CodeDom.Compiler;
 using System.IO;
@@ -52,9 +52,13 @@ namespace CSharpCompiler
                 this.filePaths = filePaths.Select(x => Path.GetFullPath(x));
                 this.manager = manager;
 
-
                 var domain = System.AppDomain.CurrentDomain;
-                this.assemblyReferences = domain.GetAssemblies().Select(a => a.Location).ToArray();
+                this.assemblyReferences =
+                    this.assemblyReferences = domain
+                    .GetAssemblies()
+                    .Where(a => !(a is System.Reflection.Emit.AssemblyBuilder))
+                    .Select(a => a.Location)
+                    .ToArray();
 
                 manager.logWriter.WriteLine("loading " + string.Join(", ", filePaths.ToArray()));
                 CompileFiles();
