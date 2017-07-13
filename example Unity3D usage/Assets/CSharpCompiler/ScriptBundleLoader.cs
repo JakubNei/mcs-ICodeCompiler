@@ -53,8 +53,7 @@ namespace CSharpCompiler
                 this.manager = manager;
 
                 var domain = System.AppDomain.CurrentDomain;
-                this.assemblyReferences =
-                    this.assemblyReferences = domain
+                this.assemblyReferences = domain
                     .GetAssemblies()
                     .Where(a => !(a is System.Reflection.Emit.AssemblyBuilder))
                     .Select(a => a.Location)
