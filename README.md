@@ -1,9 +1,9 @@
 # mcs-ICodeCompiler
 
-[Mono MCS](http://www.mono-project.com/docs/about-mono/languages/csharp/) is a C# console application used to compile C#, I took it's source and used it to implement [ICodeCompiler](https://msdn.microsoft.com/en-us/library/system.codedom.compiler.icodecompiler(v=vs.110).aspx) interface.
+[MCS](http://www.mono-project.com/docs/about-mono/languages/csharp/) (also know as Mono.CSharp) is a C# code compiler coded in C#, I took it's source and used it to implement [ICodeCompiler](https://msdn.microsoft.com/en-us/library/system.codedom.compiler.icodecompiler(v=vs.110).aspx) interface. Out of the box Mono.CSharp.dll already supports limited form of dynamic compilation (Mono.CSharp.Evaluator.Compile), I just went out of the way to modify it to implement ICodeCompiler interface.
 
 ### Why
-Mono version that Unity uses has an ICodeCompiler iplementation that depends heavily on paths and likely will work only on Linux systems with Mono installed. (see for your self: https://www.google.cz/search?q=mono+CSharpCodeCompiler.cs). Thus if your game uses ICodeCompiler implementation provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, whereas Unity editor uses the full ~300MB Mono install)
+Mono version that Unity uses has an ICodeCompiler implementation that heavily depends on paths and other shenanigans. Thus if your game uses ICodeCompiler implementation provided by Mono it will likely cause exceptions in release build. (Because a release build uses only 2MB Mono runtime, without the required files, whereas Unity editor uses the full ~300MB Mono install)
 
 MCS was recently dual licensed under MIT X11 and GNU GPL. Thus we choose MIT X11 which allows everyone to use it in commercial applications. (see: https://github.com/mono/mono/blob/master/LICENSE)
 
@@ -40,18 +40,12 @@ Dynamic compilation means your code is compiled into System.Reflection.Emit.Asse
 If compilation takes long time everytime you start your game, you could technically save compiled dynamic assembly into dll file with [System.Reflection.Emit.AssemblyBuilder.Save(string filePath)](https://msdn.microsoft.com/en-us/library/8zwdfdeh(v=vs.110).aspx) and on the next run load it with [System.Reflection.Assembly.LoadFrom(string assemblyFile)](https://msdn.microsoft.com/en-us/library/1009fa28(v=vs.110).aspx).
 
 ## Why am I releasing this here
-* I had this laying around for about 3 months.
+* I had this laying around.
 * I see others doing ugly workarounds. 
 * I never properly tested it.
 
 ## Future work
 You can limit the permissions of assemblies by loading them into your own sandboxed AppDomain. This is what [Space Engineers](https://github.com/KeenSoftwareHouse/SpaceEngineers/) and other games do. It would be nice if this project contained an easy to use classes to do this.
-
-## Default behavior
-Tries to be as close as possible to the official .NET ICodeCompiler implementation.
- 
-## Performance considerations
-All of the classes needed are instantiated and used once per each compilation. Each compilation results in one more loaded assembly that you can not unload (you can only unload AppDomain, but not Assembly).
 
 ## License
 Same as MCS: MIT X11
