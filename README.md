@@ -39,6 +39,10 @@ Dynamic compilation means your code is compiled into System.Reflection.Emit.Asse
 
 If compilation takes long time everytime you start your game, you could technically save compiled dynamic assembly into dll file with [System.Reflection.Emit.AssemblyBuilder.Save(string filePath)](https://msdn.microsoft.com/en-us/library/8zwdfdeh(v=vs.110).aspx) and on the next run load it with [System.Reflection.Assembly.LoadFrom(string assemblyFile)](https://msdn.microsoft.com/en-us/library/1009fa28(v=vs.110).aspx).
 
+Latest MCS uses expression trees for dynamic compilation instead of dynamic assembly, thus latest MCS with dynamic compilation won't work with Unity.
+
+Theoretically you don't need to implement ICodeCompiler at all, MCS out of the does expose Mono.CSharp.Evaluator class. You however have less control over the output if you compile your code this way.
+
 ## Why am I releasing this here
 * I had this laying around.
 * I see others doing ugly workarounds. 
