@@ -13,9 +13,9 @@ Part of ongoing effort to perfect the answer for: http://answers.unity3d.com/que
 
 More humanly explained: [Compile C# at runtime in Unity3D](http://www.arcturuscollective.com/archives/22) (thank you [exodrifter](https://github.com/exodrifter))
 
-http://gamedev.stackexchange.com/a/130584/41980 (useful warning here)
+Useful warning http://gamedev.stackexchange.com/a/130584/41980
 
-[CS-Script for Unity](https://www.assetstore.unity3d.com/en/#!/content/23510)
+Pretty much replaces [CS-Script for Unity](https://www.assetstore.unity3d.com/en/#!/content/23510)
 
 ## Steps I took to make this work
 
