@@ -55,7 +55,7 @@ namespace CSharpCompiler
                 var domain = System.AppDomain.CurrentDomain;
                 this.assemblyReferences = domain
                     .GetAssemblies()
-                    .Where(a => !(a is System.Reflection.Emit.AssemblyBuilder))
+                    .Where(a => !(a is System.Reflection.Emit.AssemblyBuilder) && !string.IsNullOrEmpty(a.Location))
                     .Select(a => a.Location)
                     .ToArray();
 
