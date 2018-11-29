@@ -1,3 +1,8 @@
+# NOT MAINTAINED
+I don't plan on fixing this.
+Feel free to fix and create pull request.
+If I were to work on this, I would instead create new version that uses [Roslyn](https://github.com/dotnet/roslyn/tree/master/src/Interactive/Features/Interactive/Core).
+
 # mcs-ICodeCompiler
 
 [MCS](http://www.mono-project.com/docs/about-mono/languages/csharp/) (also know as Mono.CSharp) is a C# code compiler coded in C#, I took it's source and used it to implement [ICodeCompiler](https://msdn.microsoft.com/en-us/library/system.codedom.compiler.icodecompiler(v=vs.110).aspx) interface. Out of the box Mono.CSharp.dll already supports limited form of dynamic compilation (Mono.CSharp.Evaluator.Compile), I just went out of the way to modify it to implement ICodeCompiler interface.
